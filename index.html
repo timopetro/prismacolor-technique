@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prismacolor Technique — Landing Page</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; color: #1a1a1a; background: #fff; }
+    .site-header { background: #fff; border-bottom: 1px solid #e8e8e8; padding: 14px 40px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+    .site-header img.logo { height: 44px; width: auto; }
+    .site-nav { display: flex; gap: 32px; list-style: none; }
+    .site-nav a { text-decoration: none; color: #1a1a1a; font-size: 13px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; }
+    .hero { position: relative; width: 100%; background: #000; overflow: hidden; }
+    .hero video { width: 100%; display: block; max-height: 85vh; object-fit: cover; }
+    .hero-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; pointer-events: none; }
+    .hero-overlay .brand-name { color: #fff; font-size: clamp(28px, 5vw, 64px); font-weight: 900; letter-spacing: 0.18em; text-transform: uppercase; display: block; line-height: 1; }
+    .hero-overlay .technique-word { color: #c9a84c; font-size: clamp(14px, 2.5vw, 32px); font-weight: 400; letter-spacing: 0.55em; text-transform: uppercase; display: block; margin-top: 4px; }
+    .overcome { display: grid; grid-template-columns: 1fr 2fr 1fr; min-height: 380px; align-items: stretch; }
+    .overcome-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .overcome-text { padding: 60px 40px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fff; }
+    .overcome-text h2 { font-size: clamp(20px, 3vw, 36px); font-weight: 900; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.15; margin-bottom: 16px; }
+    .overcome-text p { font-size: 16px; color: #444; margin-bottom: 28px; max-width: 320px; }
+    .btn-primary { display: inline-block; background: #00b4c8; color: #fff; text-decoration: none; padding: 12px 40px; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border-radius: 2px; }
+    .kits-section { padding: 60px 40px; text-align: center; }
+    .kits-section h2 { font-size: clamp(18px, 2.5vw, 30px); font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 40px; }
+    .level-tabs { display: flex; justify-content: center; gap: 0; margin-bottom: 40px; border-bottom: 2px solid #e0e0e0; }
+    .level-tab { padding: 12px 36px; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; cursor: default; color: #888; border-bottom: 3px solid transparent; margin-bottom: -2px; }
+    .level-tab.active { color: #1a1a1a; border-bottom-color: #1a1a1a; }
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px; max-width: 1100px; margin: 0 auto; }
+    .product-card { text-align: center; }
+    .product-card img { width: 100%; height: auto; display: block; margin-bottom: 12px; }
+    .product-card .product-name { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #1a1a1a; line-height: 1.4; }
+    .product-card .product-level { font-size: 11px; color: #888; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .features { background: #1d1d27; padding: 64px 40px; color: #fff; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; max-width: 1000px; margin: 0 auto; text-align: center; }
+    .feature h3 { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; color: #fff; }
+    .feature p { font-size: 14px; color: #aaa; line-height: 1.6; }
+    .feature-icon { font-size: 32px; margin-bottom: 16px; }
+    .level-guide { padding: 64px 40px; text-align: center; background: #f8f8f8; }
+    .level-guide h2 { font-size: clamp(18px, 2.5vw, 28px); font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+    .level-guide .subtitle { color: #555; max-width: 600px; margin: 0 auto 48px; line-height: 1.7; }
+    .level-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; max-width: 900px; margin: 0 auto; }
+    .level-card { background: #fff; border: 1px solid #e0e0e0; padding: 32px 24px; text-align: left; }
+    .level-badge { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #00b4c8; margin-bottom: 8px; }
+    .level-card h3 { font-size: 16px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; }
+    .level-card p { font-size: 14px; color: #555; line-height: 1.6; }
+    .site-footer { background: #1d1d27; padding: 40px; text-align: center; }
+    .site-footer img { height: 32px; width: auto; margin-bottom: 16px; filter: brightness(10); }
+    .site-footer p { color: #666; font-size: 12px; }
+    .portfolio-note { background: #f0f0f0; border-left: 4px solid #c9a84c; padding: 14px 20px; font-size: 13px; color: #555; text-align: center; }
+    @media (max-width: 768px) { .overcome { grid-template-columns: 1fr; } .overcome-img:first-child { display: none; } .overcome-img:last-child { display: none; } .site-nav { display: none; } .site-header { padding: 14px 20px; } }
+  </style>
+</head>
+<body>
+  <div class="portfolio-note">Prismacolor Technique — Landing page designed by Timothy Petrochko, Creative Director. Original live at <a href="https://www.prismacolor.com/technique.html" target="_blank">prismacolor.com/technique</a></div>
+  <header class="site-header">
+    <img class="logo" src="https://www.prismacolor.com/on/demandware.static/Sites-prismacolor-Site/-/default/dw03433f20/images/brand-logo.svg" alt="Prismacolor">
+    <nav><ul class="site-nav"><li><a href="#">Colored Pencils</a></li><li><a href="#">Markers</a></li><li><a href="#">Graphite Pencils</a></li><li><a href="#">Pastels</a></li><li><a href="#">Art Sets</a></li><li><a href="#">Get Inspired</a></li></ul></nav>
+  </header>
+  <section class="hero">
+    <video autoplay loop muted playsinline>
+      <source src="https://s7d9.scene7.com/is/content/NewellRubbermaid/Technique-LP_Desktop_Prismacolor-PurpleProdigy__16x9%20_0924_V2" type="video/mp4">
+    </video>
+    <div class="hero-overlay"><span class="brand-name">Prismacolor</span><span class="technique-word">Technique</span></div>
+  </section>
+  <section class="overcome">
+    <img class="overcome-img" src="https://newellbrands.imgix.net/ddd76bc1-ea7f-37ae-bb19-c0a3cae45361/ddd76bc1-ea7f-37ae-bb19-c0a3cae45361.jpg" alt="Prismacolor colored pencils">
+    <div class="overcome-text"><h2>Overcome Your Fear of the Blank Page</h2><p>Build skills and confidence with digital lessons paired with art supplies.</p><a href="https://www.prismacolor.com/technique.html" class="btn-primary" target="_blank">Explore</a></div>
+    <img class="overcome-img" src="https://newellbrands.imgix.net/57537c09-da21-32ca-b25b-f755e4ca2892/57537c09-da21-32ca-b25b-f755e4ca2892.jpg" alt="Prismacolor art supplies">
+  </section>
+  <section class="kits-section">
+    <h2>Available Prismacolor Technique Kits</h2>
+    <div class="level-tabs"><div class="level-tab active">Level 1</div><div class="level-tab">Level 2</div><div class="level-tab">Level 3</div></div>
+    <div class="product-grid">
+      <div class="product-card"><img src="https://s7d1.scene7.com/is/image/NewellBrands/2154394_2162103_atf_nonnew_1?wid=400&hei=400&fit=crop" alt="Animal Drawing Set Level 1"><div class="product-name">Animal Drawing Set</div><div class="product-level">Level 1 - Fox Portrait</div></div>
+      <div class="product-card"><img src="https://s7d1.scene7.com/is/image/NewellBrands/2154319_2162105_atf_nonnew_1?wid=400&hei=400&fit=crop" alt="Nature Drawing Set Level 1"><div class="product-name">Nature Drawing Set</div><div class="product-level">Level 1 - Flower</div></div>
+      <div class="product-card"><img src="https://s7d1.scene7.com/is/image/NewellBrands/2174760_atf-1?wid=400&hei=400&fit=crop" alt="Landscape Drawing Set Level 1"><div class="product-name">Landscape Drawing Set</div><div class="product-level">Level 1 - Palm Tree</div></div>
+      <div class="product-card"><img src="https://s7d1.scene7.com/is/image/NewellBrands/2154335_atf-1?wid=400&hei=400&fit=crop" alt="Portrait Drawing Set Level 1"><div class="product-name">Portrait Drawing Set</div><div class="product-level">Level 1 - Human Features</div></div>
+      <div class="product-card"><img src="https://s7d1.scene7.com/is/image/NewellBrands/2154318_2161999_atf_nonnew_1?wid=400&hei=400&fit=crop" alt="Animal Drawing Set Level 2"><div class="product-name">Animal Drawing Set</div><div class="product-level">Level 2 - Bird</div></div>
+      <div class="product-card"><img src="https://s7d1.scene7.com/is/image/NewellBrands/2154395_2162101_atf_nonnew_1?wid=400&hei=400&fit=crop" alt="Nature Drawing Set Level 2"><div class="product-name">Nature Drawing Set</div><div class="product-level">Level 2 - Sunset</div></div>
+      <div class="product-card"><img src="https://s7d1.scene7.com/is/image/NewellBrands/2154393_2162000_atf_nonnew_1?wid=400&hei=400&fit=crop" alt="Pet Drawing Set Level 3"><div class="product-name">Pet Drawing Set</div><div class="product-level">Level 3 - Your Pet</div></div>
+      <div class="product-card"><img src="https://s7d1.scene7.com/is/image/NewellBrands/2154392_2161998_atf_nonnew_1?wid=400&hei=400&fit=crop" alt="Nature Drawing Set Level 3"><div class="product-name">Nature Drawing Set</div><div class="product-level">Level 3 - Landscape</div></div>
+    </div>
+  </section>
+  <section class="features">
+    <div class="features-grid">
+      <div class="feature"><div class="feature-icon">+</div><h3>Get Inspired</h3><p>Each kit comes with its own unique art project to inspire and motivate you to learn.</p></div>
+      <div class="feature"><div class="feature-icon">></div><h3>Access Exclusive Digital Lessons</h3><p>Taught by Prismacolor artists, these lessons are available to watch at your own convenience.</p></div>
+      <div class="feature"><div class="feature-icon">*</div><h3>Create with High-Quality Art Supplies</h3><p>The tools in each kit make learning art techniques easier for artists of every skill level.</p></div>
+      <div class="feature"><div class="feature-icon">#</div><h3>Share Your Work</h3><p>Tag #PrismacolorTechnique on social to share your art and discover more art tips.</p></div>
+    </div>
+  </section>
+  <section class="level-guide">
+    <h2>Find Your Starting Point</h2>
+    <p class="subtitle">The Prismacolor Technique comes in multiple kits. Each kit contains multiple videos to improve your skills.</p>
+    <div class="level-cards">
+      <div class="level-card"><div class="level-badge">Level 1</div><h3>Drawing and Shading</h3><p>Ready to begin your art journey? Start building skill and knowledge here while working with colored pencils.</p></div>
+      <div class="level-card"><div class="level-badge">Level 2</div><h3>Color and Style</h3><p>Work on your technique and continue to build confidence. You will add new tools to your repertoire.</p></div>
+      <div class="level-card"><div class="level-badge">Level 3</div><h3>Refinement and Mastery</h3><p>Pick up the final touches and learn how to transform any reference into a work of art you can call your own.</p></div>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <img src="https://www.prismacolor.com/on/demandware.static/Sites-prismacolor-Site/-/default/dwadbfe5ca/images/brand-logo-footer.svg" alt="Prismacolor">
+    <p>Prismacolor. All rights reserved.</p>
+  </footer>
+</body>
+</html>
