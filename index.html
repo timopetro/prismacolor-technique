@@ -40,7 +40,8 @@
     .product-card .product-name { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #1a1a1a; line-height: 1.4; }
     .product-card .product-level { font-size: 12px; color: #888; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.07em; }
     .features { background: #1d1d27; padding: 64px 40px; color: #fff; }
-    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 44px; max-width: 1000px; margin: 0 auto; text-align: center; }
+    .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 44px; max-width: 1100px; margin: 0 auto; text-align: center; }
+    @media (max-width: 900px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
     .feature-icon { margin-bottom: 18px; display: flex; align-items: center; justify-content: center; }
     .feature-icon svg { width: 38px; height: 38px; }
     .feature h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; color: #fff; }
@@ -67,12 +68,7 @@
       <span class="logo-text">Prismacolor</span>
     </div>
     <nav><ul class="site-nav">
-      <li><a href="#">Colored Pencils</a></li>
-      <li><a href="#">Markers</a></li>
-      <li><a href="#">Graphite Pencils</a></li>
-      <li><a href="#">Pastels</a></li>
-      <li><a href="#">Art Sets</a></li>
-      <li><a href="#">Get Inspired</a></li>
+      <li><a href="#">Colored Pencils</a></li><li><a href="#">Markers</a></li><li><a href="#">Graphite Pencils</a></li><li><a href="#">Pastels</a></li><li><a href="#">Art Sets</a></li><li><a href="#">Get Inspired</a></li>
     </ul></nav>
   </header>
   <section class="hero">
@@ -134,14 +130,9 @@
     <p>Prismacolor. All rights reserved.</p>
   </footer>
   <script>
-    var tabs = document.querySelectorAll('.level-tab');
-    var cards = document.querySelectorAll('.product-card');
-    function showLevel(level) {
-      level = String(level);
-      tabs.forEach(function(t){ t.classList.toggle('active', t.dataset.level===level); });
-      cards.forEach(function(c){ c.classList.toggle('visible', c.dataset.level===level); });
-    }
-    tabs.forEach(function(tab){ tab.addEventListener('click', function(){ showLevel(this.dataset.level); }); });
+    var tabs=document.querySelectorAll('.level-tab'),cards=document.querySelectorAll('.product-card');
+    function showLevel(l){l=String(l);tabs.forEach(function(t){t.classList.toggle('active',t.dataset.level===l)});cards.forEach(function(c){c.classList.toggle('visible',c.dataset.level===l)})}
+    tabs.forEach(function(t){t.addEventListener('click',function(){showLevel(this.dataset.level)})});
     showLevel('1');
   </script>
 </body>
